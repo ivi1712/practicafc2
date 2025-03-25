@@ -82,8 +82,6 @@ void main() {
 	//vemos si U estaba más lejos
 	char mayor = d_u > d_v;
 	guardar(mayor, &mayor_u);
-	// fin del programa
-	// prueba
 
 	while(1); //quedo en un bucle infinito
 }

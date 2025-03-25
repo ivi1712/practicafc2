@@ -1,0 +1,393 @@
+
+pr4.elf:     file format elf32-littleriscv
+pr4.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000188
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x000001ec memsz 0x000001ec flags r-x
+    LOAD off    0x00002000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x00000028 memsz 0x00000029 flags rw-
+
+Sections:
+Idx Name              Size      VMA       LMA       File off  Algn  Flags
+  0 .text             000000ac  00000000  00000000  00001000  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .text.mul         00000084  000000ac  000000ac  000010ac  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .text.i_sqrt      00000058  00000130  00000130  00001130  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .text.main        00000064  00000188  00000188  00001188  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  4 .data.U           00000014  00010000  00010000  00002000  2**2  CONTENTS, ALLOC, LOAD, DATA
+  5 .data.V           00000014  00010014  00010014  00002014  2**2  CONTENTS, ALLOC, LOAD, DATA
+  6 .sbss.mayor_u     00000001  00010028  00010028  00002028  2**0  ALLOC
+  7 .riscv.attributes 00000021  00000000  00000000  00002028  2**0  CONTENTS, READONLY
+  8 .comment          00000012  00000000  00000000  00002049  2**0  CONTENTS, READONLY
+  9 .debug_line       00000271  00000000  00000000  0000205b  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 10 .debug_info       00000191  00000000  00000000  000022cc  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 11 .debug_abbrev     0000012d  00000000  00000000  0000245d  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 12 .debug_aranges    00000050  00000000  00000000  00002590  2**3  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 13 .debug_str        00002411  00000000  00000000  000025e0  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 14 .debug_ranges     00000020  00000000  00000000  000049f1  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 15 .debug_macro      000006ff  00000000  00000000  00004a11  2**0  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 16 .debug_frame      00000078  00000000  00000000  00005110  2**2  CONTENTS, READONLY, DEBUGGING, OCTETS
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+000000ac l    d  .text.mul	00000000 .text.mul
+00000130 l    d  .text.i_sqrt	00000000 .text.i_sqrt
+00000188 l    d  .text.main	00000000 .text.main
+00010000 l    d  .data.U	00000000 .data.U
+00010014 l    d  .data.V	00000000 .data.V
+00010028 l    d  .sbss.mayor_u	00000000 .sbss.mayor_u
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_macro	00000000 .debug_macro
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 ./fun_asm.o
+00000000 l       .text	00000000 main
+00000018 l       .text	00000000 for_eucl
+00000068 l       .text	00000000 efor
+00000000 l    df *ABS*	00000000 pr4.c
+00000008 g       .text	00000000 eucl_dist
+00000130 g     F .text.i_sqrt	00000058 i_sqrt
+00010014 g     O .data.V	00000014 V
+000000ac g     F .text.mul	00000084 mul
+00000188 g     F .text.main	00000064 main
+00010028 g     O .sbss.mayor_u	00000001 mayor_u
+00010000 g     O .data.U	00000014 U
+00020000 g       *ABS*	00000000 _stack
+000000a4 g       .text	00000000 guardar
+
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+main():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:25
+.extern mul
+.extern i_sqrt
+.extern _stack
+
+main:
+	la sp , _stack
+   0:	00020117          	auipc	sp,0x20
+   4:	00010113          	mv	sp,sp
+
+00000008 <eucl_dist>:
+eucl_dist():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:32
+//int eucl_dist(int * w, int size);
+eucl_dist:
+    //recibo dirección de W en a0, y tamaño N en a1
+    //realizo los cálculos pertinentes
+    //devuelvo el resultado en a0
+	mv t1, a0  // t1 = W = a0
+   8:	00050313          	mv	t1,a0
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:33
+	mv t2, a1 // t2 = N = a1
+   c:	00058393          	mv	t2,a1
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:34
+	li t3, 0 // i = 0
+  10:	00000e13          	li	t3,0
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:35
+	li t4, 0 // t4 = acc
+  14:	00000e93          	li	t4,0
+
+00000018 <for_eucl>:
+for_eucl():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:37
+for_eucl:
+	bge t3, t2, efor
+  18:	047e5863          	bge	t3,t2,68 <efor>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:40
+	// a0 = w[i]
+	// a1 = w[i]
+	slli a0, t3, 2
+  1c:	002e1513          	slli	a0,t3,0x2
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:41
+	add a0, t1, a0
+  20:	00a30533          	add	a0,t1,a0
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:42
+	lw a0, 0(a0)
+  24:	00052503          	lw	a0,0(a0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:43
+	addi sp , sp , -20
+  28:	fec10113          	addi	sp,sp,-20 # 1ffec <mayor_u+0xffc4>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:44
+	sw ra , 16(sp)
+  2c:	00112823          	sw	ra,16(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:45
+	sw t4 , 12(sp)
+  30:	01d12623          	sw	t4,12(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:46
+	sw t3 , 8(sp)
+  34:	01c12423          	sw	t3,8(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:47
+	sw t2 , 4(sp)
+  38:	00712223          	sw	t2,4(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:48
+	sw t1 , 0(sp)
+  3c:	00612023          	sw	t1,0(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:49
+	call mul
+  40:	06c000ef          	jal	ra,ac <mul>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:51
+	// a0 = int res
+	lw ra , 16(sp)
+  44:	01012083          	lw	ra,16(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:52
+	lw t4 , 12(sp)
+  48:	00c12e83          	lw	t4,12(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:53
+	lw t3 , 8(sp)
+  4c:	00812e03          	lw	t3,8(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:54
+	lw t2 , 4(sp)
+  50:	00412383          	lw	t2,4(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:55
+	lw t1 , 0(sp)
+  54:	00012303          	lw	t1,0(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:56
+	addi sp , sp , 20
+  58:	01410113          	addi	sp,sp,20
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:57
+	add t4, t4, a0
+  5c:	00ae8eb3          	add	t4,t4,a0
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:58
+	addi t3, t3, 1
+  60:	001e0e13          	addi	t3,t3,1
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:59
+	j for_eucl
+  64:	fb5ff06f          	j	18 <for_eucl>
+
+00000068 <efor>:
+efor():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:61
+efor:
+	mv a0, t4
+  68:	000e8513          	mv	a0,t4
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:62
+	addi sp , sp , -20
+  6c:	fec10113          	addi	sp,sp,-20
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:63
+	sw ra , 16(sp)
+  70:	00112823          	sw	ra,16(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:64
+	sw t4 , 12(sp)
+  74:	01d12623          	sw	t4,12(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:65
+	sw t3 , 8(sp)
+  78:	01c12423          	sw	t3,8(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:66
+	sw t2 , 4(sp)
+  7c:	00712223          	sw	t2,4(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:67
+	sw t1 , 0(sp)
+  80:	00612023          	sw	t1,0(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:68
+	call i_sqrt
+  84:	0ac000ef          	jal	ra,130 <i_sqrt>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:69
+	lw ra , 16(sp)
+  88:	01012083          	lw	ra,16(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:70
+	lw t4 , 12(sp)
+  8c:	00c12e83          	lw	t4,12(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:71
+	lw t3 , 8(sp)
+  90:	00812e03          	lw	t3,8(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:72
+	lw t2 , 4(sp)
+  94:	00412383          	lw	t2,4(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:73
+	lw t1 , 0(sp)
+  98:	00012303          	lw	t1,0(sp)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:74
+	addi sp , sp , 20
+  9c:	01410113          	addi	sp,sp,20
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:75
+	ret
+  a0:	00008067          	ret
+
+000000a4 <guardar>:
+guardar():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:83
+	//int guardar(char valor, char * ubicacion);
+    //recibo el valor en a0, y la dirección destino en a1
+    //asegurarse que sólo se guarda UN BYTE!!
+    //mv a0, t1 // a0 = t1 = valor
+    //mv a1, t2 // a1 = t2 = ubicacion
+    sb a0, 0(a1)
+  a4:	00a58023          	sb	a0,0(a1)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../fun_asm.asm:84
+    ret
+  a8:	00008067          	ret
+
+Disassembly of section .text.mul:
+
+000000ac <mul>:
+mul():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:36
+*/
+
+/**
+ * Función simple que multiplica dos números iterativamente
+ */
+int mul(int a, int b) {
+  ac:	fd010113          	addi	sp,sp,-48
+  b0:	02812623          	sw	s0,44(sp)
+  b4:	03010413          	addi	s0,sp,48
+  b8:	fca42e23          	sw	a0,-36(s0)
+  bc:	fcb42c23          	sw	a1,-40(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:37
+	int res = 0, sign = 0;
+  c0:	fe042623          	sw	zero,-20(s0)
+  c4:	fe042423          	sw	zero,-24(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:38
+	if (a < 0) {
+  c8:	fdc42783          	lw	a5,-36(s0)
+  cc:	0207d663          	bgez	a5,f8 <mul+0x4c>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:39
+		sign = 1;
+  d0:	00100793          	li	a5,1
+  d4:	fef42423          	sw	a5,-24(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:40
+		a = -a;
+  d8:	fdc42783          	lw	a5,-36(s0)
+  dc:	40f007b3          	neg	a5,a5
+  e0:	fcf42e23          	sw	a5,-36(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:42
+	}
+	while (a--) res += b;
+  e4:	0140006f          	j	f8 <mul+0x4c>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:42 (discriminator 2)
+  e8:	fec42703          	lw	a4,-20(s0)
+  ec:	fd842783          	lw	a5,-40(s0)
+  f0:	00f707b3          	add	a5,a4,a5
+  f4:	fef42623          	sw	a5,-20(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:42 (discriminator 1)
+  f8:	fdc42783          	lw	a5,-36(s0)
+  fc:	fff78713          	addi	a4,a5,-1
+ 100:	fce42e23          	sw	a4,-36(s0)
+ 104:	fe0792e3          	bnez	a5,e8 <mul+0x3c>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:43
+	if (sign)
+ 108:	fe842783          	lw	a5,-24(s0)
+ 10c:	00078863          	beqz	a5,11c <mul+0x70>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:44
+		return -res;
+ 110:	fec42783          	lw	a5,-20(s0)
+ 114:	40f007b3          	neg	a5,a5
+ 118:	0080006f          	j	120 <mul+0x74>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:46
+	else
+		return res;
+ 11c:	fec42783          	lw	a5,-20(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:47
+}
+ 120:	00078513          	mv	a0,a5
+ 124:	02c12403          	lw	s0,44(sp)
+ 128:	03010113          	addi	sp,sp,48
+ 12c:	00008067          	ret
+
+Disassembly of section .text.i_sqrt:
+
+00000130 <i_sqrt>:
+i_sqrt():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:52
+
+/**
+ * Función simple que obtiene la raíz cuadrada iterativamente
+ */
+int i_sqrt(int a) {
+ 130:	fd010113          	addi	sp,sp,-48
+ 134:	02112623          	sw	ra,44(sp)
+ 138:	02812423          	sw	s0,40(sp)
+ 13c:	03010413          	addi	s0,sp,48
+ 140:	fca42e23          	sw	a0,-36(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:53
+	int root = 0;
+ 144:	fe042623          	sw	zero,-20(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:54
+	while (mul(root, root) < a) {
+ 148:	0100006f          	j	158 <i_sqrt+0x28>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:55
+		root++;
+ 14c:	fec42783          	lw	a5,-20(s0)
+ 150:	00178793          	addi	a5,a5,1
+ 154:	fef42623          	sw	a5,-20(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:54
+	while (mul(root, root) < a) {
+ 158:	fec42583          	lw	a1,-20(s0)
+ 15c:	fec42503          	lw	a0,-20(s0)
+ 160:	f4dff0ef          	jal	ra,ac <mul>
+ 164:	00050713          	mv	a4,a0
+ 168:	fdc42783          	lw	a5,-36(s0)
+ 16c:	fef740e3          	blt	a4,a5,14c <i_sqrt+0x1c>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:57
+	}
+	return root;
+ 170:	fec42783          	lw	a5,-20(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:58
+}
+ 174:	00078513          	mv	a0,a5
+ 178:	02c12083          	lw	ra,44(sp)
+ 17c:	02812403          	lw	s0,40(sp)
+ 180:	03010113          	addi	sp,sp,48
+ 184:	00008067          	ret
+
+Disassembly of section .text.main:
+
+00000188 <main>:
+main():
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:78
+*/
+
+/**
+ * Punto de entrada al programa
+ */
+void main() {
+ 188:	fe010113          	addi	sp,sp,-32
+ 18c:	00112e23          	sw	ra,28(sp)
+ 190:	00812c23          	sw	s0,24(sp)
+ 194:	02010413          	addi	s0,sp,32
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:80
+	//calculamos la distancia euclídea al origen
+	int d_u = eucl_dist(U, N);
+ 198:	00500593          	li	a1,5
+ 19c:	000107b7          	lui	a5,0x10
+ 1a0:	00078513          	mv	a0,a5
+ 1a4:	e65ff0ef          	jal	ra,8 <eucl_dist>
+ 1a8:	fea42623          	sw	a0,-20(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:81
+	int d_v = eucl_dist(V, N);
+ 1ac:	00500593          	li	a1,5
+ 1b0:	000107b7          	lui	a5,0x10
+ 1b4:	01478513          	addi	a0,a5,20 # 10014 <V>
+ 1b8:	e51ff0ef          	jal	ra,8 <eucl_dist>
+ 1bc:	fea42423          	sw	a0,-24(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:83
+	//vemos si U estaba más lejos
+	char mayor = d_u < d_v;
+ 1c0:	fec42703          	lw	a4,-20(s0)
+ 1c4:	fe842783          	lw	a5,-24(s0)
+ 1c8:	00f727b3          	slt	a5,a4,a5
+ 1cc:	0ff7f793          	andi	a5,a5,255
+ 1d0:	fef403a3          	sb	a5,-25(s0)
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:84
+	guardar(mayor, &mayor_u);
+ 1d4:	fe740703          	lb	a4,-25(s0)
+ 1d8:	000107b7          	lui	a5,0x10
+ 1dc:	02878593          	addi	a1,a5,40 # 10028 <mayor_u>
+ 1e0:	00070513          	mv	a0,a4
+ 1e4:	ec1ff0ef          	jal	ra,a4 <guardar>
+C:\Users\ivi17\Downloads\FC2practicasWS\pr4\Debug/../pr4.c:86 (discriminator 1)
+
+	while(1); //quedo en un bucle infinito
+ 1e8:	0000006f          	j	1e8 <main+0x60>

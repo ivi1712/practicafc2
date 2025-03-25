@@ -1,0 +1,36 @@
+16:17:35 **** Incremental Build of configuration Debug for project pr4 ****
+make all 
+'Building file: ../pr4.c'
+'Invoking: GNU RISC-V Cross C Compiler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr4.d" -MT"pr4.o" -c -o "pr4.o" "../pr4.c"
+../pr4.c: In function 'main':
+../pr4.c:80:12: warning: implicit declaration of function 'eucl_dist' [-Wimplicit-function-declaration]
+   80 |  int d_u = eucl_dist(U, N);
+      |            ^~~~~~~~~
+../pr4.c:84:2: warning: implicit declaration of function 'guardar' [-Wimplicit-function-declaration]
+   84 |  guardar(mayor, &mayor_u);
+      |  ^~~~~~~
+'Finished building: ../pr4.c'
+' '
+'Building target: pr4.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4.map" -o "pr4.elf"  ./fun_asm.o ./pr4.o   
+'Finished building target: pr4.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr4.elf"  "pr4.hex"
+'Finished building: pr4.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr4.elf" > "pr4.lst"
+'Finished building: pr4.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr4.elf"
+   text	   data	    bss	    dec	    hex	filename
+    492	     40	      1	    533	    215	pr4.elf
+'Finished building: pr4.siz'
+' '
+
+16:17:36 Build Finished. 0 errors, 2 warnings. (took 917ms)
+

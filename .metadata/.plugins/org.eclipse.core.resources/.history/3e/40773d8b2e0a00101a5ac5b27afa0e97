@@ -76,8 +76,6 @@ void guardar_word (int valor, int * direccion){
 	* direccion = valor;
 }*/
 
-/*
-
 void guardar_vector(int vector[], int destino[], int size){
 	for (int i= 0; i< size; i++){
 		int valor = vector[i];
@@ -85,7 +83,6 @@ void guardar_vector(int vector[], int destino[], int size){
 		guardar_word(valor, direccion);
 	}
 }
-*/
 
 
 /**

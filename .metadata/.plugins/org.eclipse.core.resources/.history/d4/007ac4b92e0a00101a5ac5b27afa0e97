@@ -21,6 +21,7 @@
 .extern i_sqrt
 .extern _stack
 .global guardar_word
+.global guardar_vector
 
 main:
 	la sp , _stack
@@ -101,11 +102,11 @@ guardar_vector:
 	sw t3 , 8(sp)
 	sw t2 , 4(sp)
 	sw t1 , 0(sp)
+
 	mv t1, a0 // t1 = a0 = vector[]
 	mv t2, a1 // t2 = a1 = destino[]
 	mv t3, a2 // t3 = a2 = size
 	li t4, 0 // t4 = i
-
 
 forg:
 	bge t4, t3, eforg
@@ -114,7 +115,7 @@ forg:
 	lw a0, 0(a0) // valor = vector [i]
 	// destino [i]
 	add a1, t2, t5
-	//lw a1, 0(a1)
+	lw a1, 0(a1)
 	call guardar_word
 	addi t4, t4, 1
 	j forg
@@ -127,8 +128,6 @@ eforg:
 	lw t1 , 0(sp)
 	addi sp , sp , 24
 	ret
-
-
 
 
 

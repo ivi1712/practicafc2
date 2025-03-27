@@ -101,33 +101,23 @@ guardar_vector:
 	sw t3 , 8(sp)
 	sw t2 , 4(sp)
 	sw t1 , 0(sp)
+
 	mv t1, a0 // t1 = a0 = vector[]
 	mv t2, a1 // t2 = a1 = destino[]
 	mv t3, a2 // t3 = a2 = size
 	li t4, 0 // t4 = i
 
-
-forg:
 	bge t4, t3, eforg
 	slli t5, t4, 2
 	add a0, t1, t5
 	lw a0, 0(a0) // valor = vector [i]
 	// destino [i]
 	add a1, t2, t5
-	//lw a1, 0(a1)
-	call guardar_word
-	addi t4, t4, 1
-	j forg
-eforg:
-	lw t5 , 20(sp)
-	lw ra , 16(sp)
-	lw t4 , 12(sp)
-	lw t3 , 8(sp)
-	lw t2 , 4(sp)
-	lw t1 , 0(sp)
-	addi sp , sp , 24
-	ret
+	lw a1, 0(a1)
+	mv a1,
 
+
+eforg:
 
 
 

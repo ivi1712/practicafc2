@@ -1,0 +1,30 @@
+/*---------------------------------------------------------------------
+**
+**  Fichero:
+**    pr4_lab.c  19/10/2022
+**
+**    (c) Daniel Báscones García
+**    Fundamentos de Computadores II
+**    Facultad de Informática. Universidad Complutense de Madrid
+**
+**  Propósito:
+**    Fichero de código para la práctica 4_lab
+**
+**-------------------------------------------------------------------*/
+#define N 5
+
+//nuestros dos vectores de N componentes
+int U[N] = {5, 2, -3, 7, 6};
+int V[N] = {6, -1, 1, 0, 3};
+//variable que almacenará el resultado: 1 si U es mayor, 0 si es V
+char mayor_u;
+
+int MAY[n]
+
+void main(){
+	if (mayor_u){
+
+	}else{
+
+	}
+}

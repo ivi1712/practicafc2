@@ -7,17 +7,17 @@ ASM_SRCS += \
 ../fun_asm.asm 
 
 C_SRCS += \
-../fun_c.c 
+../pr5.c 
 
 OBJS += \
 ./fun_asm.o \
-./fun_c.o 
+./pr5.o 
 
 ASM_DEPS += \
 ./fun_asm.d 
 
 C_DEPS += \
-./fun_c.d 
+./pr5.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

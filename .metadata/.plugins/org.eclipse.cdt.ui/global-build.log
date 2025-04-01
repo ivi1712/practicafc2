@@ -1,225 +1,589 @@
-11:15:42 **** Incremental Build of configuration Debug for project pr4_lab ****
+11:40:09 **** Incremental Build of configuration Debug for project pr5 ****
 make all 
 'Building file: ../fun_asm.asm'
 'Invoking: GNU RISC-V Cross Assembler'
 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
 'Finished building: ../fun_asm.asm'
 ' '
-'Building target: pr4_lab.elf'
+'Building target: pr5.elf'
 'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-'Finished building target: pr4_lab.elf'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
 ' '
 'Invoking: GNU RISC-V Cross Create Flash Image'
-riscv64-unknown-elf-objcopy -O ihex "pr4_lab.elf"  "pr4_lab.hex"
-'Finished building: pr4_lab.hex'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
 ' '
 'Invoking: GNU RISC-V Cross Create Listing'
-riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr4_lab.elf" > "pr4_lab.lst"
-'Finished building: pr4_lab.lst'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
 ' '
 'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
    text	   data	    bss	    dec	    hex	filename
-    744	     40	     21	    805	    325	pr4_lab.elf
-'Finished building: pr4_lab.siz'
+    472	    100	    104	    676	    2a4	pr5.elf
+'Finished building: pr5.siz'
 ' '
-11:16:01 **** Incremental Build of configuration Debug for project pr4_lab ****
+11:40:25 **** Incremental Build of configuration Debug for project pr5 ****
 make all 
 'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
    text	   data	    bss	    dec	    hex	filename
-    744	     40	     21	    805	    325	pr4_lab.elf
-'Finished building: pr4_lab.siz'
+    472	    100	    104	    676	    2a4	pr5.elf
+'Finished building: pr5.siz'
 ' '
-11:16:33 **** Incremental Build of configuration Debug for project pr4_lab ****
-make all 
-'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
-   text	   data	    bss	    dec	    hex	filename
-    744	     40	     21	    805	    325	pr4_lab.elf
-'Finished building: pr4_lab.siz'
-' '
-11:20:08 **** Incremental Build of configuration Debug for project pr4_lab ****
+11:41:33 **** Incremental Build of configuration Debug for project pr5 ****
 make all 
 'Building file: ../fun_asm.asm'
 'Invoking: GNU RISC-V Cross Assembler'
 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
 'Finished building: ../fun_asm.asm'
 ' '
-'Building file: ../pr4_lab.c'
+'Building file: ../pr5.c'
 'Invoking: GNU RISC-V Cross C Compiler'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr4_lab.d" -MT"pr4_lab.o" -c -o "pr4_lab.o" "../pr4_lab.c"
-../pr4_lab.c: In function 'guardar_vector':
-../pr4_lab.c:83:3: warning: implicit declaration of function 'guardar_word'; did you mean 'guardar_vector'? [-Wimplicit-function-declaration]
-   83 |   guardar_word(valor, direccion);
-      |   ^~~~~~~~~~~~
-      |   guardar_vector
-../pr4_lab.c: In function 'main':
-../pr4_lab.c:93:12: warning: implicit declaration of function 'eucl_dist' [-Wimplicit-function-declaration]
-   93 |  int d_u = eucl_dist(U, N);
-      |            ^~~~~~~~~
-../pr4_lab.c:97:2: warning: implicit declaration of function 'guardar' [-Wimplicit-function-declaration]
-   97 |  guardar(mayor, &mayor_u);
-      |  ^~~~~~~
-'Finished building: ../pr4_lab.c'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
 ' '
-'Building target: pr4_lab.elf'
+'Building target: pr5.elf'
 'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-c:/users/ivi17/downloads/eclipserv/eclipse/sysgcc/bin/../lib/gcc/riscv64-unknown-elf/10.1.0/../../../../riscv64-unknown-elf/bin/ld.exe: ./pr4_lab.o: in function `guardar_vector':
-C:\Users\ivi17\Downloads\FC2practicasWS\pr4_lab\Debug/../pr4_lab.c:83: undefined reference to `guardar_word'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   2040	    100	    104	   2244	    8c4	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:42:22 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   2040	    100	    104	   2244	    8c4	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:43:20 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building file: ../pr5.c'
+'Invoking: GNU RISC-V Cross C Compiler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+    472	    100	    104	    676	    2a4	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:44:21 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+    472	    100	    104	    676	    2a4	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:47:44 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../pr5.c'
+'Invoking: GNU RISC-V Cross C Compiler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+c:/users/ivi17/documents/eclipse/sysgcc/bin/../lib/gcc/riscv64-unknown-elf/10.1.0/../../../../riscv64-unknown-elf/bin/ld.exe: ./pr5.o: in function `matrixPow':
+C:\Users\ivi17\Downloads\FC2practicasWS\pr5\Debug/../pr5.c:48: multiple definition of `matrixPow'; ./fun_asm.o:C:\Users\ivi17\Downloads\FC2practicasWS\pr5\Debug/../fun_asm.asm:98: first defined here
 collect2.exe: error: ld returned 1 exit status
-make: *** [pr4_lab.elf] Error 1
+make: *** [pr5.elf] Error 1
 "make all" terminated with exit code 2. Build might be incomplete.
-11:20:27 **** Incremental Build of configuration Debug for project pr4_lab ****
+11:47:57 **** Incremental Build of configuration Debug for project pr5 ****
 make all 
 'Building file: ../fun_asm.asm'
 'Invoking: GNU RISC-V Cross Assembler'
 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
 'Finished building: ../fun_asm.asm'
 ' '
-'Building target: pr4_lab.elf'
+'Building target: pr5.elf'
 'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-c:/users/ivi17/downloads/eclipserv/eclipse/sysgcc/bin/../lib/gcc/riscv64-unknown-elf/10.1.0/../../../../riscv64-unknown-elf/bin/ld.exe: ./pr4_lab.o: in function `guardar_vector':
-C:\Users\ivi17\Downloads\FC2practicasWS\pr4_lab\Debug/../pr4_lab.c:83: undefined reference to `guardar_word'
-collect2.exe: error: ld returned 1 exit status
-make: *** [pr4_lab.elf] Error 1
-"make all" terminated with exit code 2. Build might be incomplete.
-11:20:51 **** Incremental Build of configuration Debug for project pr4_lab ****
-make all 
-'Building file: ../fun_asm.asm'
-'Invoking: GNU RISC-V Cross Assembler'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
-'Finished building: ../fun_asm.asm'
-' '
-'Building target: pr4_lab.elf'
-'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-'Finished building target: pr4_lab.elf'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
 ' '
 'Invoking: GNU RISC-V Cross Create Flash Image'
-riscv64-unknown-elf-objcopy -O ihex "pr4_lab.elf"  "pr4_lab.hex"
-'Finished building: pr4_lab.hex'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
 ' '
 'Invoking: GNU RISC-V Cross Create Listing'
-riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr4_lab.elf" > "pr4_lab.lst"
-'Finished building: pr4_lab.lst'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
 ' '
 'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
    text	   data	    bss	    dec	    hex	filename
-    704	     40	     21	    765	    2fd	pr4_lab.elf
-'Finished building: pr4_lab.siz'
+   2040	    100	    104	   2244	    8c4	pr5.elf
+'Finished building: pr5.siz'
 ' '
-11:39:31 **** Incremental Build of configuration Debug for project pr4_lab ****
+11:49:03 **** Incremental Build of configuration Debug for project pr5 ****
 make all 
 'Building file: ../fun_asm.asm'
 'Invoking: GNU RISC-V Cross Assembler'
 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
 'Finished building: ../fun_asm.asm'
 ' '
-'Building file: ../pr4_lab.c'
+'Building file: ../pr5.c'
 'Invoking: GNU RISC-V Cross C Compiler'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr4_lab.d" -MT"pr4_lab.o" -c -o "pr4_lab.o" "../pr4_lab.c"
-../pr4_lab.c: In function 'main':
-../pr4_lab.c:94:12: warning: implicit declaration of function 'eucl_dist' [-Wimplicit-function-declaration]
-   94 |  int d_u = eucl_dist(U, N);
-      |            ^~~~~~~~~
-../pr4_lab.c:98:2: warning: implicit declaration of function 'guardar' [-Wimplicit-function-declaration]
-   98 |  guardar(mayor, &mayor_u);
-      |  ^~~~~~~
-../pr4_lab.c:101:3: warning: implicit declaration of function 'guardar_vector' [-Wimplicit-function-declaration]
-  101 |   guardar_vector(U, MAY, N);
-      |   ^~~~~~~~~~~~~~
-'Finished building: ../pr4_lab.c'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
 ' '
-'Building target: pr4_lab.elf'
+'Building target: pr5.elf'
 'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-'Finished building target: pr4_lab.elf'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
 ' '
 'Invoking: GNU RISC-V Cross Create Flash Image'
-riscv64-unknown-elf-objcopy -O ihex "pr4_lab.elf"  "pr4_lab.hex"
-'Finished building: pr4_lab.hex'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
 ' '
 'Invoking: GNU RISC-V Cross Create Listing'
-riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr4_lab.elf" > "pr4_lab.lst"
-'Finished building: pr4_lab.lst'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
 ' '
 'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
    text	   data	    bss	    dec	    hex	filename
-    676	     40	     21	    737	    2e1	pr4_lab.elf
-'Finished building: pr4_lab.siz'
+    472	    100	    104	    676	    2a4	pr5.elf
+'Finished building: pr5.siz'
 ' '
-11:40:35 **** Incremental Build of configuration Debug for project pr4_lab ****
+11:50:53 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+    472	    100	    104	    676	    2a4	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:55:00 **** Incremental Build of configuration Debug for project pr5 ****
 make all 
 'Building file: ../fun_asm.asm'
 'Invoking: GNU RISC-V Cross Assembler'
 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
 'Finished building: ../fun_asm.asm'
 ' '
-'Building target: pr4_lab.elf'
-'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-'Finished building target: pr4_lab.elf'
-' '
-'Invoking: GNU RISC-V Cross Create Flash Image'
-riscv64-unknown-elf-objcopy -O ihex "pr4_lab.elf"  "pr4_lab.hex"
-'Finished building: pr4_lab.hex'
-' '
-'Invoking: GNU RISC-V Cross Create Listing'
-riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr4_lab.elf" > "pr4_lab.lst"
-'Finished building: pr4_lab.lst'
-' '
-'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
-   text	   data	    bss	    dec	    hex	filename
-    672	     40	     21	    733	    2dd	pr4_lab.elf
-'Finished building: pr4_lab.siz'
-' '
-11:50:33 **** Incremental Build of configuration Debug for project pr4_lab ****
-make all 
-'Building file: ../fun_asm.asm'
-'Invoking: GNU RISC-V Cross Assembler'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
-'Finished building: ../fun_asm.asm'
-' '
-'Building file: ../pr4_lab.c'
+'Building file: ../pr5.c'
 'Invoking: GNU RISC-V Cross C Compiler'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr4_lab.d" -MT"pr4_lab.o" -c -o "pr4_lab.o" "../pr4_lab.c"
-../pr4_lab.c: In function 'guardar_vector':
-../pr4_lab.c:83:3: warning: implicit declaration of function 'guardar_word'; did you mean 'guardar_vector'? [-Wimplicit-function-declaration]
-   83 |   guardar_word(valor, direccion);
-      |   ^~~~~~~~~~~~
-      |   guardar_vector
-../pr4_lab.c: In function 'main':
-../pr4_lab.c:94:12: warning: implicit declaration of function 'eucl_dist' [-Wimplicit-function-declaration]
-   94 |  int d_u = eucl_dist(U, N);
-      |            ^~~~~~~~~
-../pr4_lab.c:98:2: warning: implicit declaration of function 'guardar' [-Wimplicit-function-declaration]
-   98 |  guardar(mayor, &mayor_u);
-      |  ^~~~~~~
-'Finished building: ../pr4_lab.c'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
 ' '
-'Building target: pr4_lab.elf'
+'Building target: pr5.elf'
 'Invoking: GNU RISC-V Cross C Linker'
-riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr4_lab.map" -o "pr4_lab.elf"  ./fun_asm.o ./pr4_lab.o   
-'Finished building target: pr4_lab.elf'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
 ' '
 'Invoking: GNU RISC-V Cross Create Flash Image'
-riscv64-unknown-elf-objcopy -O ihex "pr4_lab.elf"  "pr4_lab.hex"
-'Finished building: pr4_lab.hex'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
 ' '
 'Invoking: GNU RISC-V Cross Create Listing'
-riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr4_lab.elf" > "pr4_lab.lst"
-'Finished building: pr4_lab.lst'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
 ' '
 'Invoking: GNU RISC-V Cross Print Size'
-riscv64-unknown-elf-size --format=berkeley "pr4_lab.elf"
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
    text	   data	    bss	    dec	    hex	filename
-    704	     40	     21	    765	    2fd	pr4_lab.elf
-'Finished building: pr4_lab.siz'
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:55:46 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+11:56:37 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:00:02 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:00:18 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:05:46 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:06:09 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1228	    100	    104	   1432	    598	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:10:03 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1252	    100	    104	   1456	    5b0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:10:51 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1252	    100	    104	   1456	    5b0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:12:10 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1252	    100	    104	   1456	    5b0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:16:40 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:17:49 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:20:30 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:21:12 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:23:01 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:26:16 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:27:43 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building file: ../pr5.c'
+'Invoking: GNU RISC-V Cross C Compiler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   2080	    100	    104	   2284	    8ec	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:29:12 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   2080	    100	    104	   2284	    8ec	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:29:47 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building file: ../pr5.c'
+'Invoking: GNU RISC-V Cross C Compiler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -std=gnu11 -MMD -MP -MF"pr5.d" -MT"pr5.o" -c -o "pr5.o" "../pr5.c"
+'Finished building: ../pr5.c'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:31:03 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:31:46 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:36:33 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Building file: ../fun_asm.asm'
+'Invoking: GNU RISC-V Cross Assembler'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"fun_asm.d" -MT"fun_asm.o" -c -o "fun_asm.o" "../fun_asm.asm"
+'Finished building: ../fun_asm.asm'
+' '
+'Building target: pr5.elf'
+'Invoking: GNU RISC-V Cross C Linker'
+riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T ../ldscript.ld -nostartfiles -Wl,-Map,"pr5.map" -o "pr5.elf"  ./fun_asm.o ./pr5.o   
+'Finished building target: pr5.elf'
+' '
+'Invoking: GNU RISC-V Cross Create Flash Image'
+riscv64-unknown-elf-objcopy -O ihex "pr5.elf"  "pr5.hex"
+'Finished building: pr5.hex'
+' '
+'Invoking: GNU RISC-V Cross Create Listing'
+riscv64-unknown-elf-objdump --source --all-headers --demangle --disassemble --line-numbers --wide "pr5.elf" > "pr5.lst"
+'Finished building: pr5.lst'
+' '
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
+' '
+12:37:18 **** Incremental Build of configuration Debug for project pr5 ****
+make all 
+'Invoking: GNU RISC-V Cross Print Size'
+riscv64-unknown-elf-size --format=berkeley "pr5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1268	    100	    104	   1472	    5c0	pr5.elf
+'Finished building: pr5.siz'
 ' '

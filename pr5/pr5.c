@@ -30,51 +30,6 @@ int graph[N][N] =   //matriz de adyacencia del grafo
 int z[N][N];        //matriz resultado del algoritmo
 int paths;
 
-/*
-
-void matrixPow(int n, int x[n][n], int e, int z[n][n]) {
- int aux[n][n];
- for (int j=0; j<n; j++)
- for (int k=0; k<n; k++)
- if (j==k)
- z[j][k] = 1;
- else
- z[j][k] = 0;
- for (int i = 1; i <= e; i++) {
- matrixMul(n, x, z, aux);
- matrixCopy(n, aux, z);
- }
-}
-*/
-void matrixCopy(int n, int x[n][n], int z[n][n]) {
- for (int i = 0; i < n; i++)
- for (int j = 0; j < n; j++)
- z[i][j] = x[i][j];
-}
-
-void matrixMul(int n, int x[n][n], int y[n][n], int z[n][n]) {
- for (int i = 0; i < n; i++)
- for (int j = 0; j < n; j++) {
- z[i][j] = 0;
- for (int k = 0; k < n; k++)
- z[i][j] = z[i][j] + x[i][k] * y[k][j];
- }
-}
-/*
-void matrixPow(int n, int x[n][n], int e, int z[n][n]) {
- int aux[n][n];
- for (int j=0; j<n; j++)
- for (int k=0; k<n; k++)
- if (j==k)
- z[j][k] = 1;
- else
- z[j][k] = 0;
- for (int i = 1; i <= e; i++) {
- matrixMul(n, x, z, aux);
- matrixCopy(n, aux, z);
- }
-}
-*/
 void main() {
 
     matrixPow(N, graph, STEPS, z);

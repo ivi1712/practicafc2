@@ -1,0 +1,304 @@
+/*---------------------------------------------------------------------
+**
+**  Fichero:
+**    fun_asm.asm  01/05/2025
+**
+**    (c) J.M. Mendias
+**    Fundamentos de Computadores II
+**    Facultad de Informática. Universidad Complutense de Madrid
+**
+**  Propósito:
+**    Fichero de código para la práctica 5
+**
+**-------------------------------------------------------------------*/
+
+.data
+    .text
+    .globl matrixCopy
+# void matrixCopy(int n, int x[n][n], int z[n][n])
+/*matrixCopy:
+    # Prologo: guardamos s0, s1 y s2
+    addi    sp, sp, -12
+    sw      s0, 0(sp)
+    sw      s1, 4(sp)
+    sw      s2, 8(sp)
+
+    mv      s0, a0         # s0 = n
+    li      s1, 0          # i = 0
+copy_loop_i:
+    bge     s1, s0, copy_end
+    li      s2, 0          # j = 0
+copy_loop_j:
+    bge     s2, s0, copy_next_i
+    # Calcula offset: (i*n + j)*4
+    mul     t0, s1, s0     # t0 = i*n
+    add     t0, t0, s2     # t0 = i*n + j
+    slli    t0, t0, 2      # t0 = (i*n+j)*4
+    # Copia: z[i][j] = x[i][j]
+    add     t1, a1, t0     # t1 = dirección de x[i][j]
+    lw      t1, 0(t1)      # t1 = x[i][j]
+    add     t2, a2, t0     # t2 = dirección de z[i][j]
+    sw      t1, 0(t2)      # z[i][j] = x[i][j]
+    addi    s2, s2, 1      # j++
+    j       copy_loop_j
+copy_next_i:
+    addi    s1, s1, 1      # i++
+    j       copy_loop_i
+copy_end:
+    lw      s0, 0(sp)
+    lw      s1, 4(sp)
+    lw      s2, 8(sp)
+    addi    sp, sp, 12
+    ret
+*/
+matrixCopy:
+    // Entrada: a0 = n, a1 = puntero a x (matriz origen), a2 = puntero a z (matriz destino)
+    addi sp, sp, -8
+    sw ra, 4(sp)
+    sw s0, 0(sp)           // Guardar s0 (registro preservado)
+    mv s0, sp              // Configurar el marco de pila
+
+    mv t0, x0              // t0 = i
+ciclo_i:
+    bgt t0, a0, fin_copia  // Si i == n, terminamos
+
+    mv t1, x0              // t1 = j
+ciclo_j:
+    bgt t1, a0, siguiente_i // Si j == n
+
+    //  desplazamiento = (i * n + j) * 4
+    mul t2, t0, a0         // t2 = i * n
+    add t2, t2, t1         //t2 = i * n + j
+    slli t2, t2, 2         // t2 = (i * n + j) * 4
+
+    //Se COpia elemento x[i][j] en z[i][j]
+    add t3, a1, t2         // t3 = dirección de x[i][j]
+    lw t4, 0(t3)           // t4 = x[i][j]
+    add t5, a2, t2         // t5 = dirección de z[i][j]
+    sw t4, 0(t5)           // z[i][j] = t4
+
+    addi t1, t1, 1         // Incrementa j
+    j ciclo_j
+
+siguiente_i:
+    addi t0, t0, 1         // Incrementa i
+    j ciclo_i
+
+fin_copia:
+    lw ra, 4(sp)
+    lw s0, 0(sp)
+    addi sp, sp, 8
+    ret
+
+.globl matrixMul
+# void matrixMul(int n, int x[n][n], int y[n][n], int z[n][n])
+/*matrixMul:
+    # Prologo: guardamos s0, s1, s2 y s3
+    addi    sp, sp, -16
+    sw      s0, 0(sp)
+    sw      s1, 4(sp)
+    sw      s2, 8(sp)
+    sw      s3, 12(sp)
+
+    mv      s0, a0         # s0 = n
+    li      s1, 0          # i = 0
+mul_loop_i:
+    bge     s1, s0, mul_end
+    li      s2, 0          # j = 0
+mul_loop_j:
+    bge     s2, s0, mul_next_i
+    # Calcular dirección destino: offset = (i*n+j)*4
+    mul     t0, s1, s0     # t0 = i*n
+    add     t0, t0, s2     # t0 = i*n+j
+    slli    t0, t0, 2      # t0 = offset en bytes
+    add     t0, a3, t0     # t0 = &z[i][j]
+    li      t2, 0          # acumulador = 0
+    li      s3, 0          # k = 0
+mul_loop_k:
+    bge     s3, s0, mul_finish_j
+    # Cargar x[i][k]:
+    mul     t3, s1, s0     # t3 = i*n
+    add     t3, t3, s3     # t3 = i*n+k
+    slli    t3, t3, 2      # t3 = offset
+    add     t4, a1, t3     # t4 = &x[i][k]
+    lw      t4, 0(t4)      # t4 = x[i][k]
+    # Cargar y[k][j]:
+    mul     t5, s3, s0     # t5 = k*n
+    add     t5, t5, s2     # t5 = k*n+j
+    slli    t5, t5, 2      # t5 = offset
+    add     t5, a2, t5     # t5 = &y[k][j]
+    lw      t5, 0(t5)      # t5 = y[k][j]
+    # Multiplicar y acumular:
+    mul     t1, t4, t5     # t1 = x[i][k]*y[k][j]
+    add     t2, t2, t1     # acumulador += t1
+    addi    s3, s3, 1      # k++
+    j       mul_loop_k
+mul_finish_j:
+    sw      t2, 0(t0)      # z[i][j] = acumulador
+    addi    s2, s2, 1      # j++
+    j       mul_loop_j
+mul_next_i:
+    addi    s1, s1, 1      # i++
+    j       mul_loop_i
+mul_end:
+    lw      s0, 0(sp)
+    lw      s1, 4(sp)
+    lw      s2, 8(sp)
+    lw      s3, 12(sp)
+    addi    sp, sp, 16
+    ret
+*/
+matrixMul:
+    // Entrada: a0 = n, a1 = puntero a x, a2 = puntero a y, a3 = puntero a z
+    addi sp, sp, 16
+    sw ra, 12(sp)
+    sw s0, 8(sp)
+    sw s1, 4(sp)
+    sw s2, 0(sp)
+    mv s0, sp
+
+    mv t0, x0              // t0 = i
+ciclo_i_mult:
+    bgt t0, a0, fin_mult   // Si i == n, terminamos
+
+    mv t1, x0              // t1 = j
+ciclo_j_mult:
+    bgt t1, a0, siguiente_i_mult # Si j == n
+
+    // Inicializa z[i][j] a 0
+    mul t2, t0, a0         // t2 = i * n
+    add t2, t2, t1         // t2 = i * n + j
+    slli t2, t2, 2         // t2 = (i * n + j) * 4
+    add t3, a3, t2         // t3 = dirección de z[i][j]
+    sw x0, 0(t3)           // z[i][j] = 0
+
+    mv t4, x0              // t4 = k
+ciclo_k_mult:
+    bgt t4, a0, siguiente_j_mult
+
+    // Cargar x[i][k] y y[k][j]
+    mul t5, t0, a0         // t5 = i * n
+    add t5, t5, t4         // t5 = i * n + k
+    slli t5, t5, 2        // t5 = (i * n + k) * 4
+    add t6, a1, t5         // t6 = dirección de x[i][k]
+    lw t7, 0(t6)           // t7 = x[i][k]
+
+    mul t8, t4, a0         // t8 = k * n
+    add t8, t8, t1         // t8 = k * n + j
+    slli t8, t8, 2         // t8 = (k * n + j) * 4
+    add t9, a2, t8         // t9 = dirección de y[k][j]
+    lw t10, 0(t9)          // t10 = y[k][j]
+
+    // Multiplicar y meter en z[i][j]
+    mul t11, t7, t10       // t11 = x[i][k] * y[k][j]
+    lw t12, 0(t3)          // Cargar z[i][j]
+    add t12, t12, t11      // t12 += t11
+    sw t12, 0(t3)          // Guardar z[i][j]
+
+    addi t4, t4, 1         //k++
+    j ciclo_k_mult         // Repetir para el siguiente k
+
+siguiente_j_mult:
+    addi t1, t1, 1         //j++
+    j ciclo_j_mult
+
+siguiente_i_mult:
+    addi t0, t0, 1         //i++
+    j ciclo_i_mult
+
+fin_mult:
+    lw ra, 12(sp)
+    lw s0, 8(sp)
+    lw s1, 4(sp)
+    lw s2, 0(sp)
+    addi sp, sp, 16
+    ret
+    .globl matrixPow
+# void matrixPow(int n, int x[n][n], int e, int z[n][n])
+# Se crea en la pila la matriz auxiliar aux.
+matrixPow:
+    # Prologo: guardamos s0-s6 (s6 se usará para guardar el puntero a aux)
+    addi    sp, sp, -32
+    sw      s0, 0(sp)
+    sw      s1, 4(sp)
+    sw      s2, 8(sp)
+    sw      s3, 12(sp)
+    sw      s4, 16(sp)
+    sw      s5, 20(sp)
+    sw      s6, 24(sp)
+    sw 		ra, 28(sp)
+
+    mv      s0, a0         # s0 = n
+    mv      s4, a3         # s4 = puntero a z (resultado)
+    mv      s5, a1         # s5 = puntero a x
+
+    # Calcular tamaño de aux: aux_size = n*n*4
+    mul     t0, s0, s0
+    slli    t0, t0, 2      # t0 = n*n*4
+    # Reservar espacio para aux en la pila
+    sub     sp, sp, t0
+    mv      s6, sp         # s6 = puntero a aux (se guarda en s6, registro salvado)
+
+    # Inicializar z a la matriz identidad:
+    li      s1, 0         # s1 = índice j
+init_loop_j_pow:
+    bge     s1, s0, init_done_pow
+    li      s2, 0         # s2 = índice k
+init_loop_k_pow:
+    bge     s2, s0, next_j_init_pow
+    # Calcular dirección de z[j][k]: offset = (j*n+k)*4
+    mul     t2, s1, s0
+    add     t2, t2, s2
+    slli    t2, t2, 2
+    add     t2, s4, t2    # t2 = &z[j][k]
+    # Si j == k -> 1, sino 0
+    beq     s1, s2, set_one_pow
+    li      t3, 0
+    j       store_z_pow
+set_one_pow:
+    li      t3, 1
+store_z_pow:
+    sw      t3, 0(t2)
+    addi    s2, s2, 1
+    j       init_loop_k_pow
+next_j_init_pow:
+    addi    s1, s1, 1
+    j       init_loop_j_pow
+init_done_pow:
+    # Guardar el exponente (e) en t4
+    mv      t4, a2        // t4 = e
+    li      s3, 1         // s3 = contador de potencia (inicia en 1)
+exp_loop_pow:
+    bgt     s3, t4, exp_done_pow
+    # Llamada a: matrixMul(n, x, z, aux)
+    # Se usan: a0 = n, a1 = x (guardado en s5), a2 = z (guardado en s4), a3 = aux (guardado en s6)
+    mv      a0, s0
+    mv      a1, s5
+    mv      a2, s4
+    mv      a3, s6       // ¡Usamos s6 (registro salvado) para aux!
+    call    matrixMul
+    # Llamada a: matrixCopy(n, aux, z)
+    mv      a0, s0
+    mv      a1, s6       // aux
+    mv      a2, s4
+    call    matrixCopy
+    addi    s3, s3, 1
+    j       exp_loop_pow
+exp_done_pow:
+    # Liberar espacio reservado para aux (se suma t0 a sp)
+    //sub     s6, s6, sp
+    mul     t0, s0, s0
+    slli    t0, t0, 2      // t0 = n*n*4
+    add     sp, sp, t0
+    # Restaurar registros salvados y liberar marco de pila
+    lw 		ra, 28(sp)
+    lw      s6, 24(sp)
+    lw      s5, 20(sp)
+    lw      s4, 16(sp)
+    lw      s3, 12(sp)
+    lw      s2, 8(sp)
+    lw      s1, 4(sp)
+    lw      s0, 0(sp)
+    addi    sp, sp, 32
+    ret
+

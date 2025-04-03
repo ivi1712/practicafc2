@@ -71,9 +71,9 @@ OUTPUT(pr5.elf elf32-littleriscv)
  .comment       0x0000000000000000       0x12 ./pr5.o
                                          0x13 (size before relaxing)
 
-.debug_line     0x0000000000000000      0x38d
+.debug_line     0x0000000000000000      0x38c
  .debug_line    0x0000000000000000      0x32d ./fun_asm.o
- .debug_line    0x000000000000032d       0x60 ./pr5.o
+ .debug_line    0x000000000000032d       0x5f ./pr5.o
 
 .debug_info     0x0000000000000000       0xba
  .debug_info    0x0000000000000000       0x26 ./fun_asm.o

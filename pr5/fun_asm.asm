@@ -25,11 +25,11 @@ matrixCopy:
 
     mv t0, x0              // t0 = i
 ciclo_i:
-    bgt t0, a0, fin_copia  // Si i == n, terminamos
+    bge t0, a0, fin_copia  // Si i == n, terminamos
 
     mv t1, x0              // t1 = j
 ciclo_j:
-    bgt t1, a0, siguiente_i // Si j == n
+    bge t1, a0, siguiente_i // Si j == n
 
     //  desplazamiento = (i * n + j) * 4
     mul t2, t0, a0         // t2 = i * n
@@ -65,24 +65,24 @@ matrixMul:
     sw   s2, 0(sp)
     mv   s0, sp
 
-    mv   t0, x0              // t0 = i
+    li   t0, 0              // t0 = i
 ciclo_i_mult:
-    bgt  t0, a0, fin_mult    // Si i > n, terminamos
+    bge  t0, a0, fin_mult    // Si i > n, terminamos
 
-    mv   t1, x0              // t1 = j
+    li   t1, 0              // t1 = j
 ciclo_j_mult:
-    bgt  t1, a0, siguiente_i_mult  // Si j > n, terminamos con esta fila
+    bge  t1, a0, siguiente_i_mult  // Si j > n, terminamos con esta fila
 
     // Inicializa z[i][j] a 0
     mul  t2, t0, a0         // t2 = i * n
     add  t2, t2, t1         // t2 = i * n + j
     slli t2, t2, 2         // t2 = (i * n + j) * 4
     add  t3, a3, t2         // t3 = dirección de z[i][j]
-    sw   x0, 0(t3)         // z[i][j] = 0
+    sw   zero, 0(t3)         // z[i][j] = 0
 
     mv   t4, x0             // t4 = k
 ciclo_k_mult:
-    bgt  t4, a0, siguiente_j_mult  // Si k > n, saltar al siguiente j
+    bge  t4, a0, siguiente_j_mult  // Si k > n, saltar al siguiente j
 
     // Cargar x[i][k]:
     mul  t5, t0, a0         // t5 = i * n
@@ -151,35 +151,36 @@ matrixPow:
 
     // Inicializar z a la matriz identidad:
     li      s1, 0         // s1 = índice j
-init_loop_j_pow:
-    bge     s1, s0, init_done_pow
+bucle_j_pow:
+    bge     s1, s0, iniciar_e_bucle_pow
     li      s2, 0         // s2 = índice k
-init_loop_k_pow:
-    bge     s2, s0, next_j_init_pow
+bucle_k_pow:
+    bge     s2, s0, end_k_pow
     // Calcular dirección de z[j][k]: offset = (j*n+k)*4
     mul     t2, s1, s0
     add     t2, t2, s2
     slli    t2, t2, 2
     add     t2, s4, t2    // t2 = &z[j][k]
     // Si j == k -> 1, sino 0
-    beq     s1, s2, set_one_pow
+    beq     s1, s2, set_one
     li      t3, 0
-    j       store_z_pow
-set_one_pow:
+    j       guardarz_pow
+set_one:
     li      t3, 1
-store_z_pow:
+guardarz_pow:
     sw      t3, 0(t2)
     addi    s2, s2, 1
-    j       init_loop_k_pow
-next_j_init_pow:
+    j       bucle_k_pow
+end_k_pow:
     addi    s1, s1, 1
-    j       init_loop_j_pow
-init_done_pow:
+    j       bucle_j_pow
+iniciar_e_bucle_pow:
     // Guardar el exponente (e) en t4
-    mv      t4, a2        // t4 = e
+    //mv      t4, a2        // t4 = e
+    mv 		s1, a2
     li      s3, 1         // s3 = contador de potencia (inicia en 1)
-exp_loop_pow:
-    bgt     s3, t4, exp_done_pow
+bucle_e_pow:
+    bgt     s3, s1, fin_bucle_e_pow
     // Llamada a: matrixMul(n, x, z, aux)
     // Se usan: a0 = n, a1 = x (guardado en s5), a2 = z (guardado en s4), a3 = aux (guardado en s6)
     mv      a0, s0
@@ -193,8 +194,8 @@ exp_loop_pow:
     mv      a2, s4
     call    matrixCopy
     addi    s3, s3, 1
-    j       exp_loop_pow
-exp_done_pow:
+    j       bucle_e_pow
+fin_bucle_e_pow:
     // Liberar espacio reservado para aux (se suma t0 a sp)
     //sub     s6, s6, sp
     mul     t0, s0, s0
